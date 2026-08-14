@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import{Link} from"react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export function ShopperRegister() {
@@ -37,7 +38,7 @@ export function ShopperRegister() {
             console.log("Server response:", response.data);
 
             alert("Registration Successful!");
-            navigate("/home");
+            navigate("/login");
 
             // Form clear
             setUser({
@@ -195,6 +196,9 @@ export function ShopperRegister() {
                                 >
                                     Register
                                 </button>
+            <div>
+                <Link to="/login">Already have an account? Login here</Link>
+            </div>
 
 
                             </form>
