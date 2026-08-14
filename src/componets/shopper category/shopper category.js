@@ -1,10 +1,18 @@
 import { useParams,Link} from "react-router-dom";
 import {useState,useEffect} from 'react';
 import axios from 'axios';
+import{useNavigate} from'react-router-dom';
+import {useCookies} from'react-cookie';
 export function ShopperCategory(){
     const params=useParams();
     const[products,setProducts]=useState([]);
+    const[cookies,setCookie,removeCookie]=useCookies(["userid"]);
+    const navigate=useNavigate();
+
      useEffect(()=>{
+         if(!cookies["userid"]){
+            navigate("/login");
+        }
         axios({
             method:'get',
 url: `https://fakestoreapi.com/products/category/${params.catname}`,

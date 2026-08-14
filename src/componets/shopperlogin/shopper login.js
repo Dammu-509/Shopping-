@@ -2,9 +2,12 @@ import { useState } from "react";
 import{Formik,Field,Form} from 'formik';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {useCookies} from 'react-cookie';
+import{Link} from 'react-router-dom';
 
 export function ShopperLogin(){
     const navigate = useNavigate();
+    const[cookies,setCookie,removeCookie]=useCookies([]);
     return(
         <div>
             <h2>User Login</h2>
@@ -20,6 +23,7 @@ export function ShopperLogin(){
                     var found =false;
                     for(var user of response.data)
                         if(user.UserId === values.UserId && user.PassWord === values.PassWord){
+                            setCookie("userid",values.UserId,);
                             navigate("/home");
                         break;
                         }
@@ -44,6 +48,9 @@ export function ShopperLogin(){
                                 >
                                     Login
                                 </button>
+                                 <div>
+                <Link to="/register">New user !Register here</Link>
+            </div>
 
                 </Form>
             </Formik>

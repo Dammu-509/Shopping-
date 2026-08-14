@@ -16,7 +16,7 @@ export function ShopperIndex(){
         <h2 className="me-3">Shopper.</h2>
     </div>
     <nav className="d-flex align-items-center">
-         <div  className="me-2"> <Link to="/home" className="btn"></Link>Home</div>
+         <div  className="me-2"> <Link to="/home" className="btn">Home</Link></div>
         <div  className="me-3"><Link to="category/men's clothing" className="btn">Mens Fashion</Link></div>
         <div className="me-3"><Link to="category/women's clothing" className="btn"> Womens Fashion</Link></div>
         <div className="me-3"> <Link to="category/electronics" className="btn" >Electronics</Link></div>
