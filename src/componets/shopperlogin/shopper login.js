@@ -13,26 +13,44 @@ export function ShopperLogin(){
             <h2>User Login</h2>
             <Formik
             initialValues={{ UserId: "", PassWord: "" }}
-            onSubmit={(values) => {
-                console.log("Login values:", values);
-                axios({
-                    method: "get",
-                    url: "http://127.0.0.1:5000/users",
-                })
-                .then(response => {
-                    var found =false;
-                    for(var user of response.data)
-                        if(user.UserId === values.UserId && user.PassWord === values.PassWord){
-                            setCookie("userid",values.UserId,);
-                            navigate("/home");
-                        break;
-                        }
-                        else{
-                           navigate("/invalid");
+           onSubmit={(values) => {
 
-                        }
-                    });
-                 }}
+    console.log("Login values:", values);
+
+    axios({
+        method: "get",
+        url: "http://127.0.0.1:8080/users"
+    })
+    .then(response => {
+
+        let found = false;
+
+        for (var user of response.data) {
+
+            if (
+                user.UserId === values.UserId &&
+                user.PassWord === values.PassWord
+            ) {
+
+                found = true;
+
+                setCookie("userid", values.UserId);
+
+                navigate("/home");
+
+                break;
+            }
+        }
+
+        if (!found) {
+            navigate("/invalid");
+        }
+
+    })
+    .catch(error => {
+        console.log("Login error:", error);
+    });
+}}
                   >
                 <Form>
                     <dl>

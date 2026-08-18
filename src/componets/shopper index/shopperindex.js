@@ -6,6 +6,10 @@ import { ShopperDetails } from "../shopper details/shopper details";
 import { ShopperRegister } from "../shopper register/shopper register";
 import { ShopperLogin } from "../shopperlogin/shopper login";
 import { ShopperInvalid } from "../shopperInvalid/shopper invalid";
+import { CrudIndex } from "../Crud-operations/crud index";
+import { CrudCreate } from "../Crud-operations/crud-create";
+import { CrudDetails } from "../Crud-operations/Crud-Details";
+import { CrudEdit } from "../Crud-operations/Crud-edit";
 
 export function ShopperIndex(){
     return(
@@ -17,6 +21,7 @@ export function ShopperIndex(){
     </div>
     <nav className="d-flex align-items-center">
          <div  className="me-2"> <Link to="/home" className="btn">Home</Link></div>
+        <div  className="me-2"> <Link to="/products" className="btn">products</Link></div>
         <div  className="me-3"><Link to="category/men's clothing" className="btn">Mens Fashion</Link></div>
         <div className="me-3"><Link to="category/women's clothing" className="btn"> Womens Fashion</Link></div>
         <div className="me-3"> <Link to="category/electronics" className="btn" >Electronics</Link></div>
@@ -42,6 +47,10 @@ export function ShopperIndex(){
         <Route path="register" element={<ShopperRegister/>}></Route>
         <Route path="login" element={<ShopperLogin/>}></Route>
         <Route path="invalid" element={<ShopperInvalid/>}></Route>
+        <Route path="products" element={<CrudIndex/>}></Route>
+        <Route path="NewProduct" element={<CrudCreate/>}></Route>
+        <Route path="cruddetails/:id" element={<CrudDetails/>}></Route>
+        <Route path="crudedit/:id" element={<CrudEdit/>}></Route>
     </Routes>
 
    </div>
